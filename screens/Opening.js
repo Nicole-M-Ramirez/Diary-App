@@ -1,5 +1,6 @@
 import {StyleSheet, Pressable, Alert, Text, View} from 'react-native';
 
+let page = null;
 
 function Opening({navigation}) {
 
@@ -22,17 +23,7 @@ function Opening({navigation}) {
               styles.button,
             ]}
             onPress={pressHandlerW}>
-            <Text style={styles.buttonText}>Write Antry</Text>
-          </Pressable>
-          <Pressable
-            style={({pressed}) => [
-              {
-                backgroundColor: pressed ? 'violet' : 'pink',
-              },
-              styles.button,
-            ]}
-            onPress={pressHandlerD}>
-            <Text style={styles.buttonText}>See Past Antry</Text>
+            <Text style={styles.buttonText}>Write Entry</Text>
           </Pressable>
         </View>
       );

@@ -1,9 +1,37 @@
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Pressable, AsyncStorage} from 'react-native';
 import {useState} from 'react';
 
-function Writing() {
+let DiaryData = [
+  {id:"June 28",
+   date: "June 28", 
+   text: "I was Sick today"
+  },
+  {id:"June 29",
+   date:"June 29",
+  text: "I feel better today"
+  }
+]
+
+function Writing({navigation}) {
     const [date, setDate] = useState('');
     const [text, setText] = useState('');
+
+    function DiaryArray() {
+      if(date === '' || text === '' ){
+        console.log("date or text promps is empty");
+        setDate('');
+        setText('');
+        return;
+      }
+
+      DiaryData=[...DiaryData, {id: date, date: date, text: text}]
+
+      setDate('');
+      setText('');
+
+      navigation.navigate('Diary', {DiaryData})
+
+    }
 
   return (
     <View
@@ -21,6 +49,16 @@ function Writing() {
         onChangeText={setText}
         value={text}
       />
+      <Pressable
+            style={({pressed}) => [
+              {
+                backgroundColor: pressed ? 'pink' : 'violet',
+              },
+              styles.button,
+            ]}
+            onPress={DiaryArray}>
+            <Text style={styles.buttonText}>Write Entry</Text>
+          </Pressable>
     </View>
   )
 }
@@ -50,5 +88,20 @@ const styles = StyleSheet.create({
   },
   textContainer:{
     fontSize: 20
-  }
+  },
+  button: {
+    borderRadius: 8,
+    padding: 6,
+    height: 50,
+    width: '70%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5,
+    marginTop: 10,
+    marginLeft: 5,
+  },
+  buttonText: {
+    fontSize: 16,
+    color: 'white',
+  },
 });

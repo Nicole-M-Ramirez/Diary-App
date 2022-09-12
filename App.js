@@ -88,7 +88,7 @@ export default function App() {
               name='Writing'
               component={Writing}
               options={{
-                headerTitle:"",
+                headerTitle:"How was today?",
                 headerTransparent: true,
                 headerTintColor: 'pink'
               }}
@@ -97,7 +97,7 @@ export default function App() {
               name='Diary'
               component={Diary}
               options={{
-                headerTitle:"",
+                headerTitle:"Diary Records",
                 headerTransparent: true,
                 headerTintColor: 'pink'
               }}
